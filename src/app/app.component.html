@@ -1,3 +1,80 @@
+<h1>ngSwitch</h1>
+<input type="text" required [(ngModel)]="name">
+<div [ngSwitch]="name">
+  <p *ngSwitchCase="'nicolas'">
+    La persona es {{name}}
+  </p>
+  <p *ngSwitchCase="'julian'">
+    La persona es {{name}}
+  </p>
+  <p *ngSwitchCase="'camilo'">
+    La persona es {{name}}
+  </p>
+  <p *ngSwitchDefault="">
+    No hace match
+  </p>
+</div>
+<hr/>
+
+<h1>*ngFor Objs</h1>
+<div>
+  <div *ngFor="let product of products">
+    <img src={{product.image}} width="250" alt="image"/>
+    <p>{{product.price}}</p>
+    <p>{{product.name}}</p>
+  </div>
+</div>
+
+<hr/>
+
+<h1>NgFor</h1>
+<input type="text" required [(ngModel)]="newName"/>
+<button (click)="handleAddName()">Add Name</button>
+<ul>
+  <li *ngIf="names.length === 0">No hay nombres</li>
+  <li *ngFor="let name of names; index as i">
+    {{i}} {{name}}
+    <button (click)="handleDeleteName(i)">Delete</button>
+  </li>
+</ul>
+<hr/>
+
+<h1>NgIf</h1>
+<input type="text" required #nameInput2="ngModel" [(ngModel)]="name"/>
+<p *ngIf="name == 'Nicolas'">Soy {{name}}</p>
+<p *ngIf="name == 'Julian' && age >= 18; else elseBlock">Soy {{name}}</p>
+<ng-template #elseBlock>
+  <p>Bloque de else</p>
+
+</ng-template>
+<hr/>
+
+<h1>NgModel</h1>
+
+
+<p>Nombre {{name}}</p>
+<input type="text" required #nameInput="ngModel" [(ngModel)]="name"/>
+<p>Valid: {{ nameInput.valid }}</p>
+<input type="number" required max="18" min="10" #ageInput="ngModel" [(ngModel)]="age">
+<p>Valid: {{ageInput.valid}}</p>
+
+<hr/>
+
+<h1>Eventos</h1>
+<button [disabled]="btnDisabled">Enviar</button>
+<button (click)="toggleButton()">Toogle btn</button>
+<p>Edad {{age}}</p>
+<button (click)="handleChangeAge()">Age ++</button>
+<div class="box" (scroll)="onScroll($event)">
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Vero asperiores similique voluptas rerum impedit expedita,
+    dolores, perspiciatis voluptatem sint illo deleniti provident obcaecati,
+    officia cum aliquam. Porro molestiae reprehenderit mollitia!
+  </p>
+</div>
+<input type="text" [value]="name" (keyup)="handleChangeName($event)"/>
+<hr/>
+
 <h1>Hola mundo</h1>
 <h2>{{'Hola Mundo '.repeat(5)}}</h2>
 <p>3 +  3  = {{ 3 + 3}}</p>
